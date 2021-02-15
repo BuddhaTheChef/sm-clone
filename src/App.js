@@ -142,7 +142,7 @@ function App() {
       </Modal>
       <div className="app-header">
         <h4>Social Media</h4>
-        {/* <img className="app-headerImage" src="" alt=""/>  <--- future logo */}
+        <i className="fa fa-users fa-5x" aria-hidden="true"></i>
       </div>
       
       {user ? (
