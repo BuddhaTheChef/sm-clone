@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import { Button } from '@material-ui/core';
+import firebase from "firebase";
 import { storage, db } from "./firebase";
 
- function ImageUpload() {
+ function ImageUpload({username}) {
     const [image, setImage] = useState('');
      const [caption,setCaption] = useState('');
      const [url, setUrl] = useState('');
@@ -40,8 +41,15 @@ import { storage, db } from "./firebase";
                  .then(url => {
                      //post image inside db....
                      db.collection("posts").add({
-                         
-                     })
+                         timestamp: firebase.firestore.FieldValue.serverTimestamp(),
+                         caption: caption,
+                         imageUrl: url,
+                         username: username
+                     });
+
+                     setProgress(0);
+                     setCaption("");
+                     setImage(null);
                  })
              }
          )
@@ -52,6 +60,7 @@ import { storage, db } from "./firebase";
       {/* {Caption Input} */}
       {/* {File Picker} */}
       {/* {Post Button} */}
+      <progress value={progress} max="100"/>
         <input type="text" placeholder="Enter a caption..." onChange={event => setCaption(event.target.value)} value={caption}/>
         <input type="file" onChange={handleChange} />
         <Button onClick={handleUpload}>
