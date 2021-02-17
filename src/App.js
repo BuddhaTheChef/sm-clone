@@ -95,12 +95,6 @@ function App() {
 
   return (
     <div className="app">
-      {user?.displayName ? (
-        <ImageUpload username={user.displayName} />
-      ):(
-        <h3>Sorry, you need to login to upload</h3>
-      )}
-
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
           <form className="app-signup">
@@ -149,10 +143,8 @@ function App() {
       </Modal>
       <div className="app-header">
         <h4>Social Media</h4>
-        <i className="fa fa-users fa-5x" aria-hidden="true"></i>
-      </div>
-      
-      {user ? (
+        <i className="fa fa-users fa-3x" aria-hidden="true"></i>
+        {user ? (
         <Button onClick={() => auth.signOut()}>Logout</Button>
       ) : (
         <div className="app-loginContainer">
@@ -161,6 +153,8 @@ function App() {
         </div>
       )}
 
+      </div>
+      
       <h2>HI, welcome to a new social media</h2>
 
       {posts.map(({ id, post }) => (
@@ -171,6 +165,12 @@ function App() {
           imageUrl={post.imageUrl}
         />
       ))}
+
+{user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ):(
+        <h3>Sorry, you need to login to upload</h3>
+      )}
     </div>
   );
 }

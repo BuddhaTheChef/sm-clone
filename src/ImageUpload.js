@@ -56,11 +56,8 @@ import { storage, db } from "./firebase";
      }
 
     return (
-        <div>
-      {/* {Caption Input} */}
-      {/* {File Picker} */}
-      {/* {Post Button} */}
-      <progress value={progress} max="100"/>
+        <div className="imageUpload">
+      <progress className="imageupload-progress" value={progress} max="100"/>
         <input type="text" placeholder="Enter a caption..." onChange={event => setCaption(event.target.value)} value={caption}/>
         <input type="file" onChange={handleChange} />
         <Button onClick={handleUpload}>
