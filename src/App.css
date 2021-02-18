@@ -11,6 +11,10 @@
   justify-content: space-between;
 }
 
+.app-posts {
+  padding:20px;
+}
+
 .post {
   max-width: 500px;
   background-color: white;
@@ -58,4 +62,28 @@
 
 .imageupload-progress {
   width: 100%;
+}
+
+.post-commentBox {
+  display: flex;
+  margin-top: 10px;
+}
+
+.post-input {
+  flex:1;
+  border: none;
+  border-top: 1px solid lightgray;
+  padding: 10px;
+}
+
+.post-comments {
+  padding: 20px;
+}
+
+.post-button {
+  flex: 0;
+  border: none;
+  color: #6082a3; 
+  background-color: transparent;
+  border-top: 1px solid lightgray;
 }
