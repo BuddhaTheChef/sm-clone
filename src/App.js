@@ -5,8 +5,7 @@ import { db, auth } from "./firebase";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
-import ImageUpload from "./ImageUpload"
-import InstagramEmbed from 'react-instagram-embed';
+import ImageUpload from "./ImageUpload";
 
 
 function getModalStyle() {
@@ -62,7 +61,7 @@ function App() {
   }, [user, username]);
 
   useEffect(() => {
-    db.collection("posts").orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
+    db.collection('posts').orderBy('timestamp', 'desc').onSnapshot((snapshot) => {
       setPosts(
         snapshot.docs.map((doc) => ({
           id: doc.id,
@@ -160,24 +159,14 @@ function App() {
       {posts.map(({ id, post }) => (
         <Post
           key={id}
+          postId={id}
           username={post.username}
+          user={user}
           caption={post.caption}
           imageUrl={post.imageUrl}
         />
       ))}
       </div>
-      {/* <InstagramEmbed 
-        url='instagram.com/p/CKpG3DPn8Qb/'
-        maxWidth={320}
-        hideCaption={false}
-        containerTagName='div'
-        protocol=''
-        injectScript
-        onLoading={() => {}}
-        onSuccess={() => {}}
-        onAfterRender={() => {}}
-        onFailure={() => {}}
-      /> */}
 
 {user?.displayName ? (
         <ImageUpload username={user.displayName} />

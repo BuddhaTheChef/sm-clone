@@ -77,7 +77,7 @@
 }
 
 .post-comments {
-  padding: 20px;
+  padding: 0px 20px;
 }
 
 .post-button {
@@ -87,3 +87,5 @@
   background-color: transparent;
   border-top: 1px solid lightgray;
 }
+
+
