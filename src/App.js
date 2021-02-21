@@ -6,7 +6,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import { Button, Input } from "@material-ui/core";
 import ImageUpload from "./ImageUpload";
-
+import {lightTheme, darkTheme, GlobalStyles} from './themes'
+import styled, {ThemeProvider} from 'styled-components';
 
 function getModalStyle() {
   const top = 50;
@@ -33,7 +34,6 @@ const useStyles = makeStyles((theme) => ({
 function App() {
   const classes = useStyles();
   const [modalStyle] = useState(getModalStyle);
-
   const [posts, setPosts] = useState([]);
   const [open, setOpen] = useState(false);
   const [openSignIn, setOpenSignIn] = useState(false);
@@ -41,6 +41,11 @@ function App() {
   const [password, setPassword] = useState("");
   const [email, setEmail] = useState("");
   const [user, setUser] = useState(null);
+  const [theme, setTheme] = useState("light");
+
+  const themeToggler = () => {
+    theme === 'light' ? setTheme('dark') : setTheme('light')
+  }
 
   useEffect(() => {
     const unsubsribe = auth.onAuthStateChanged((authUser) => {
@@ -95,6 +100,9 @@ function App() {
   }
 
   return (
+    <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
+      <GlobalStyles/>
+      <button onClick={() => themeToggler()}>Change Theme</button>
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
@@ -174,6 +182,7 @@ function App() {
         <h3>Sorry, you need to login to upload</h3>
       )}
     </div>
+    </ThemeProvider>
   );
 }
 
