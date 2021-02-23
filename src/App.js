@@ -102,7 +102,6 @@ function App() {
   return (
     <ThemeProvider theme={theme === 'light' ? lightTheme : darkTheme}>
       <GlobalStyles/>
-      <button onClick={() => themeToggler()}>Change Theme</button>
     <div className="app">
       <Modal open={open} onClose={() => setOpen(false)}>
         <div style={modalStyle} className={classes.paper}>
@@ -163,6 +162,7 @@ function App() {
       )}
 
       </div>
+      <button onClick={() => themeToggler()}>Change Theme</button>
       <div className="app-posts">
       {posts.map(({ id, post }) => (
         <Post
