@@ -3,14 +3,17 @@ import { createGlobalStyle } from 'styled-components';
 export const lightTheme = {
     body: '#fff',
     fontColor: '#373949',
-    border: 'solid .4px lightgray;'
+    border: 'solid .4px lightgray;',
+    color: 'black'
 }
 
 export const darkTheme = {
     body: '#373949',
     fontColor: '#fff',
     innerBody: '#333438',
-    border: 'none'
+    border: 'none',
+    color: 'white'
+
 }
 
 export const GlobalStyles = createGlobalStyle `
@@ -39,5 +42,13 @@ body {
     0 100px 80px rgba(0, 0, 0, 0.12);
 
     border: ${props => props.theme.border};
+}
+
+.fa {
+    color: ${props => props.theme.color}
+}
+
+.app-header h4 {
+    color: ${props => props.theme.color}
 }
 `

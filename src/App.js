@@ -162,7 +162,13 @@ function App() {
       )}
 
       </div>
-      <button onClick={() => themeToggler()}>Change Theme</button>
+
+      <div className="toggle-container">
+      <input type="checkbox" onClick={() => themeToggler()} />
+      <div className="slider round"></div>
+      </div>
+
+
       <div className="app-posts">
       {posts.map(({ id, post }) => (
         <Post
